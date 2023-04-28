@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Ej. de Api</title>
+    <script>
+        $(document).ready(function(){
+
+            $("#enviar").focusin(function(){
+                $.get("https://jsonplaceholder.typicode.com/posts",function(data){
+
+                    $.each(data,function(i, item){
+                        $("#informacion").append("<tr><td>"+ item.userId +"</td><td>"+ item.id +
+                            "</td><td>"+ item.title+ "</td><td>" + item.body+ "</td></tr>");
+                    })
+
+                });
+
+            })
+
+        });
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Información de Usuarios</h2> <br>
+        <input type="button" id="enviar" value="Mostrar Informacion" class="btn btn-success"><br><br>
+
+        <table class="table" id="informacion">
+            <thead>
+                <tr>                <!--creamos una fila-->
+                    <th>User Id</th>     <!--creamos columnas en el encabezado-->
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
